@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jawa Tengah - NusantaraKu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.8;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 40%, #4a0000 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, #300000 0%, transparent 40%);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #8b0000;
+      color: #fff;
+      padding: 1.2rem;
+      text-align: center;
+      border-bottom: 2px solid #ff3333;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 10px #ff3333;
+    }
+
+    nav {
+      background: #500;
+      padding: 0.8rem;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    nav a {
+      color: #ffb3b3;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #ff3333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 2.5rem;
+      background: rgba(30, 0, 0, 0.6);
+      border-radius: 16px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 51, 51, 0.2);
+      border: 1px solid #4a0000;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(139, 0, 0, 0.1), transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    h1, h2, h3 {
+      color: #ffcccc;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 5px #ff3333;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #fff;
+    }
+
+    p, ul, li {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      border: 2px solid #600;
+      box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Video Container Responsif 16:9 */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+      border: 1px solid #4a0000;
+      margin: 2.5rem 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+    }
+
+    .back-link {
+      display: inline-block;
+      background: #8b0000;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+      transition: all 0.3s ease;
+      border: 1px solid #ff3333;
+    }
+
+    .back-link:hover {
+      background: #a00;
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li::before {
+      content: "🔥";
+      margin-right: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #330;
+      margin-top: 3rem;
+    }
+
+    footer span {
+      color: #ff3333;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+        margin: 1.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NUSANTARAKU.ID</h1>
+  </header>
+
+  <nav>
+   <a href="index.html" onclick="goHome()">Beranda</a>
+    <a href="jelajah.html" onclick="explore()">Jelajah</a>
+    <a href="game.html" onclick="playGame()">Game</a>
+  </nav>
+
+  <div class="container">
+    <a href="index.html" class="back-link" onclick="goHome()">← Kembali</a>
+
+    <h1>JAWA TENGAH: HATI NYA BUDAYA INDONESI</h1>
+
+    <img src="img/peta-lokasi-jawa-tengah.png" alt="Tari Lengger" />
+
+    <p>
+      Jawa Tengah adalah jantung budaya Jawa yang kaya akan seni pertunjukan rakyat. Salah satu yang paling ikonik adalah <strong>Tari Lengger</strong> — tarian tradisional dari Banyumas dan sekitarnya yang memadukan keindahan, kekuatan, dan keunikan gender. Tarian ini bukan hanya hiburan, tapi juga sarana spiritual dan sosial bagi masyarakat desa.
+    </p>
+
+    <h2>TARI LENGGER: TARIAN PRIA MENJADI WANITA</h2>
+    <p>
+      Tari Lengger ditarikan oleh penari pria yang berdandan seperti perempuan — dengan busana warna-warni, rias wajah halus, dan gerakan feminin yang anggun. Penari ini disebut <strong>Lengger Lanang</strong>, dan kemampuannya meniru gerak perempuan hingga level ekspresi wajah sangat dihormati.
+    </p>
+    <p>
+      Tarian ini biasanya dibuka dengan tarian solo yang lembut, lalu berubah menjadi tarian pergaulan saat penari mengajak penonton (terutama pria) untuk menari bersama. Siapa pun bisa diajak — ini adalah bentuk interaksi budaya yang hidup dan menyenangkan.
+    </p>
+
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/wiPmfOJlRsI?si=S3lNUi-nS3kr1e51" 
+        title="Tari Lengger Banyumas - Jawa Tengah"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <h2>MUSIK PENGIRING: GENDHING KETUK TILU</h2>
+    <p>
+      Tari Lengger diiringi oleh <strong>kendang, gong, dan rebab</strong> dalam bentuk musik rakyat yang disebut <em>Ketuk Tilu</em>. Musik ini ritmis, energik, dan membuat suasana menjadi meriah. Penonton sering ikut bergoyang mengikuti irama.
+    </p>
+
+    <h2>KULINER KHAS: GETHUK PISANG & SRABUT</h2>
+    <p>
+      <strong>Gethuk Pisang</strong> adalah makanan khas Banyumas — pisang yang dihaluskan, dibentuk bulat, dan digulingkan ke parutan kelapa. Rasanya manis alami dan hangat di tenggorokan.
+    </p>
+    <p>
+      <strong>Srabut</strong> adalah minuman tradisional dari gula merah, jahe, dan serai — diminum hangat, cocok sebagai teman malam setelah menonton Tari Lengger di balai desa.
+    </p>
+
+    <h2>FAKTA MENARIK</h2>
+    <ul>
+      <li>Lengger Lanang bukan tentang gender, tapi tentang <em>seni meniru</em> dan disiplin tubuh.</li>
+      <li>Di masa lalu, Tari Lengger digunakan sebagai media dakwah dan hiburan rakyat.</li>
+      <li>Penari Lengger harus bisa menari, menyanyi, dan berimprovisasi saat berinteraksi dengan penonton.</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 <span>NUSANTARAKU.ID</span> - Satu Nusantara, Seribu Budaya
+  </footer>
+
+  <script>
+    function goHome() {
+      alert("Mengarahkan ke Beranda...");
+    }
+    function explore() {
+      alert("Membuka Peta Interaktif...");
+    }
+    function playGame() {
+      alert("Memulai Game Tebak Tarian...");
+    }
+  </script>
+
+</body>
+</html>

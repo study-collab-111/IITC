@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yogyakarta - NusantaraKu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.8;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 40%, #4a0000 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, #300000 0%, transparent 40%);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #8b0000;
+      color: #fff;
+      padding: 1.2rem;
+      text-align: center;
+      border-bottom: 2px solid #ff3333;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 10px #ff3333;
+    }
+
+    nav {
+      background: #500;
+      padding: 0.8rem;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    nav a {
+      color: #ffb3b3;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #ff3333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 2.5rem;
+      background: rgba(30, 0, 0, 0.6);
+      border-radius: 16px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 51, 51, 0.2);
+      border: 1px solid #4a0000;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(139, 0, 0, 0.1), transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    h1, h2, h3 {
+      color: #ffcccc;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 5px #ff3333;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #fff;
+    }
+
+    p, ul, li {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      border: 2px solid #600;
+      box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    .video-container {
+      margin: 2.5rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+      border: 1px solid #4a0000;
+    }
+
+    .video-error {
+      background: #4a0000;
+      color: #ffcccc;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 12px;
+      font-family: 'Orbitron', sans-serif;
+      border: 1px dashed #ff3333;
+    }
+
+    .back-link {
+      display: inline-block;
+      background: #8b0000;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+      transition: all 0.3s ease;
+      border: 1px solid #ff3333;
+    }
+
+    .back-link:hover {
+      background: #a00;
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li::before {
+      content: "🔥";
+      margin-right: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #330;
+      margin-top: 3rem;
+    }
+
+    footer span {
+      color: #ff3333;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+        margin: 1.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .video-container iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NUSANTARAKU.ID</h1>
+  </header>
+
+  <nav>
+    <a href="index.html" onclick="goHome()">Beranda</a>
+    <a href="jelajah.html" onclick="explore()">Jelajah</a>
+    <a href="game.html" onclick="playGame()">Game</a>
+  </nav>
+
+  <div class="container">
+    <a href="index.html" class="back-link" onclick="goHome()">← Kembali</a>
+
+    <h1>YOGYAKARTA: JANTUNG BUDAYA JAWA</h1>
+
+    <img src="img/budaya-yogyakarta.png" alt="Yogyakarta" />
+
+    <p>
+      Yogyakarta bukan sekadar kota pelajar — ia adalah <strong>jantung budaya Jawa</strong> yang masih berdetak kuat. Dengan Keraton Yogyakarta sebagai pusatnya, kota ini mempertahankan tradisi kesultanan, kesenian klasik, dan nilai-nilai <em>alus</em> (halus) yang menjadi jiwa masyarakat Jawa.
+    </p>
+
+    <h2>TARI BEDHAYA: TARIAN SUCI KERAJAAN</h2>
+    <p>
+      Tari Bedhaya adalah tarian sakral yang dulunya hanya dipentaskan di dalam keraton oleh para putri atau kerabat raja. Ditarikan oleh 9 penari, tarian ini penuh simbolisme spiritual dan gerakan lembut yang menggambarkan harmoni antara manusia dan alam.
+    </p>
+    <p>
+      Musik pengiringnya adalah <strong>Gamelan Jawa</strong>, dengan irama lambat dan mendalam. Konon, tarian ini bisa menyebabkan penari masuk dalam keadaan trance.
+    </p>
+
+    <div class="video-container">
+      <div id="video-placeholder"></div>
+    </div>
+
+    <h2>UPACARA SEKATEN & MULUDAN</h2>
+    <p>
+      Setiap tahun, Yogyakarta menggelar <strong>Upacara Sekaten</strong>, perayaan kelahiran Nabi Muhammad yang dimulai sejak zaman Sultan Agung. Selama 7 hari, Gamelan Sekati dimainkan tanpa henti di halaman Masjid Gedhe Kauman.
+    </p>
+    <p>
+      Puncaknya adalah <strong>Grebeg Muludan</strong> — pawai rakyat dengan gunungan (tumpeng raksasa) yang dibagikan ke masyarakat sebagai simbol berkah.
+    </p>
+
+    <h2>KULINER KHAS: GUDEG YOGYA</h2>
+    <p>
+      Gudeg Yogya terkenal dengan rasa <strong>manis khas</strong> karena dimasak dengan gula jawa selama 6–8 jam. Terbuat dari nangka muda, disajikan dengan ayam, telur, dan krecek (kerupuk kulit).
+    </p>
+    <p>
+      Ada dua jenis: Gudeg Kering (kuah sedikit) dan Gudeg Basah. Jangan lupa tambahkan sambal khas Yogya untuk rasa yang lebih nendang!
+    </p>
+
+    <h2>FAKTA MENARIK</h2>
+    <ul>
+      <li>Sultan Hamengkubuwono adalah Gubernur Yogyakarta secara turun-temurun — satu-satunya di Indonesia.</li>
+      <li>Di Yogya, angka "4" dihindari karena dianggap tidak membawa berkah (mitos <em>mati lawan pati</em>).</li>
+      <li>Tari Bedhaya konon hanya boleh ditampilkan 3 kali dalam setahun.</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 <span>NUSANTARAKU.ID</span> - Satu Nusantara, Seribu Budaya
+  </footer>
+
+  <script>
+    // Muat video Tari Bedhaya
+    function loadVideo() {
+      const videoDiv = document.getElementById('video-placeholder');
+      const videoUrl = 'https://www.youtube.com/embed/WAtYi8yRsJU?si=BTJiR7DP8tDLN4xr'; // Tari Bedhaya
+
+      const iframe = document.createElement('iframe');
+      iframe.src = videoUrl;
+      iframe.title = "Tari Bedhaya - Yogyakarta";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+
+      iframe.onerror = function() {
+        videoDiv.innerHTML = `
+          <div class="video-error">
+            🎬 VIDEO TARI BEDHAYA TIDAK DAPAT DIPUTAR<br>
+            <small>Cek koneksi atau kunjungi YouTube secara langsung</small>
+          </div>
+        `;
+      };
+
+      try {
+        videoDiv.appendChild(iframe);
+      } catch (e) {
+        videoDiv.innerHTML = `<div class="video-error">GAGAL MEMUAT VIDEO</div>`;
+      }
+    }
+
+    // Simulasi navigasi
+    function goHome() {
+      alert("Mengarahkan ke Beranda...");
+      // window.location = "index.html";
+    }
+    function explore() {
+      alert("Membuka Peta Interaktif...");
+    }
+    function playGame() {
+      alert("Memulai Game Tebak Tarian...");
+    }
+
+    // Jalankan saat halaman siap
+    window.onload = loadVideo;
+  </script>
+
+</body>
+</html>

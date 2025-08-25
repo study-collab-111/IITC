@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bali - NusantaraKu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.8;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, #4a0000 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, #300000 0%, transparent 40%);
+      overflow-x: hidden;
+    }
+
+    /* Header Futuristik */
+    header {
+      background: #8b0000;
+      color: #fff;
+      padding: 1.2rem;
+      text-align: center;
+      border-bottom: 2px solid #ff3333;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 10px #ff3333;
+    }
+
+    /* Navigation */
+    nav {
+      background: #500;
+      padding: 0.8rem;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    nav a {
+      color: #ffb3b3;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #ff3333;
+    }
+
+    /* Container Utama */
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 2.5rem;
+      background: rgba(30, 0, 0, 0.6);
+      border-radius: 16px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 51, 51, 0.2);
+      border: 1px solid #4a0000;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(139, 0, 0, 0.1), transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    h1, h2, h3 {
+      color: #ffcccc;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 5px #ff3333;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #fff;
+    }
+
+    p, ul, li {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      border: 2px solid #600;
+      box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Video Container */
+    .video-container {
+      margin: 2.5rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+      border: 1px solid #4a0000;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      background: #000;
+    }
+
+    .video-error {
+      background: #4a0000;
+      color: #ffcccc;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 12px;
+      font-family: 'Orbitron', sans-serif;
+      border: 1px dashed #ff3333;
+    }
+
+    /* Back Button */
+    .back-link {
+      display: inline-block;
+      background: #8b0000;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+      transition: all 0.3s ease;
+      border: 1px solid #ff3333;
+    }
+
+    .back-link:hover {
+      background: #a00;
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
+    }
+
+    /* Fakta Menarik */
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li::before {
+      content: "🔥";
+      margin-right: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #330;
+      margin-top: 3rem;
+    }
+
+    footer span {
+      color: #ff3333;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+        margin: 1.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .video-container iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NUSANTARAKU.ID</h1>
+  </header>
+
+  <nav>
+   <a href="index.html" onclick="goHome()">Beranda</a>
+    <a href="jelajah.html" onclick="explore()">Jelajah</a>
+    <a href="game.html" onclick="playGame()">Game</a>
+  </nav>
+
+  <div class="container">
+    <a href="index.html" class="back-link" onclick="goHome()">← Kembali</a>
+
+    <h1>BALI: PULAU DEWATA</h1>
+
+    <img src="img/budaya-bali-dan-keunikan-nya.png" alt="Bali" />
+
+    <p>
+      Bali bukan hanya destinasi wisata, tapi jantung budaya Hindu-Bali yang hidup dan berdenyut kuat di tengah zaman digital. Dengan lebih dari 20.000 pura dan ritual harian, Bali adalah simfoni spiritual yang tak pernah berhenti.
+    </p>
+
+    <h2>TARI KECAK: MUSIK API DARI RIBUAN SUARA</h2>
+    <p>
+      Tari Kecak atau "Tari Api" adalah pertunjukan kolosal yang dimainkan oleh puluhan pria tanpa alat musik. Mereka menciptakan irama dramatis dengan suara "cak-cak-cak" yang menggema, menggambarkan kisah Ramayana. Ini adalah salah satu tarian paling unik di dunia.
+    </p>
+
+    <div class="video-container">
+      <div id="video-placeholder"></div>
+    </div>
+
+    <h2>NYEPI: HARI TANPA CAHAYA, TANPA SUARA</h2>
+    <p>
+      Nyepi adalah Tahun Baru Saka, tetapi bukan hari perayaan. Ini adalah hari <strong>diam total</strong>: tidak boleh menyalakan api, bepergian, bekerja, atau bahkan menggunakan listrik. Seluruh Bali menjadi gelap dan sunyi — seperti dunia pasca-apokaliptik yang damai.
+    </p>
+    <p>
+      Sehari sebelumnya, digelar <strong>Ogoh-Ogoh</strong> — patung raksasa roh jahat yang dibakar untuk membersihkan alam.
+    </p>
+
+    <h2>KULINER: BABI GULING & LAWAR</h2>
+    <p>
+      Babi Guling adalah makanan ikonik Bali: babi utuh dipanggang dengan bumbu rahasia hingga kulitnya renyah. Disajikan dengan nasi, sambal matah, dan sayur.
+    </p>
+    <p>
+      Jangan lewatkan <strong>Lawar</strong> — campuran sayur, daging, dan darah yang dimasak dengan rempah. Ini adalah rasa asli Bali: kuat, autentik, dan tak terlupakan.
+    </p>
+
+    <h2>FAKTA MENARIK</h2>
+    <ul>
+      <li>Di Bali, ada pura untuk internet dan Wi-Fi!</li>
+      <li>UNESCO mengakui Subak (irigasi sawah) sebagai Warisan Dunia.</li>
+      <li>Tari Pendet awalnya ritual penyambutan dewa, kini jadi sambutan turis.</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 <span>NUSANTARAKU.ID</span> - Satu Nusantara, Seribu Budaya
+  </footer>
+
+  <script>
+    // Fungsi untuk tampilkan video atau pesan error
+    function loadVideo() {
+      const videoDiv = document.getElementById('video-placeholder');
+      const videoUrl ="https://www.youtube.com/embed/ZG0uiScnOnc?si=tRcsVn-i4S4jYdNs";
+
+      const iframe = document.createElement('iframe');
+      iframe.src = videoUrl;
+      iframe.title = "Tari Kecak - Bali";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+
+      // Cek jika iframe bisa dimuat
+      iframe.onerror = function() {
+        videoDiv.innerHTML = `
+          <div class="video-error">
+            🎬 VIDEO TARI KECAK TIDAK DAPAT DIPUTAR<br>
+            <small>Gunakan tautan resmi atau cek koneksi Anda</small>
+          </div>
+        `;
+      };
+
+      // Coba muat iframe
+      try {
+        videoDiv.appendChild(iframe);
+      } catch (e) {
+        videoDiv.innerHTML = `<div class="video-error">GAGAL MEMUAT VIDEO</div>`;
+      }
+    }
+
+    // Fungsi navigasi (simulasi)
+    function goHome() {
+      alert("Menuju Beranda...");
+      // window.location = "index.html";
+    }
+    function explore() {
+      alert("Membuka Peta Interaktif...");
+    }
+    function playGame() {
+      alert("Memulai Game Tebak Tarian...");
+    }
+
+    // Muat video saat halaman siap
+    window.onload = loadVideo;
+  </script>
+
+</body>
+</html>

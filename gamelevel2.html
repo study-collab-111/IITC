@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game: Tebak Rumah Adat & Senjata - NusantaraKu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.6;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, #4a0000 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, #300000 0%, transparent 40%);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #8b0000;
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px #ff3333;
+    }
+
+    nav {
+      background: #500;
+      padding: 0.8rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: #ffb3b3;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(30, 0, 0, 0.7);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      border: 1px solid #4a0000;
+    }
+
+    .screen {
+      text-align: center;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 5px #ff3333;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    input {
+      padding: 0.8rem;
+      width: 80%;
+      max-width: 300px;
+      border: none;
+      border-radius: 30px;
+      margin: 1rem 0;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+    }
+
+    .btn {
+      background: #cc0000;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #f00;
+      transform: translateY(-2px);
+    }
+
+    .timer {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #ff3333;
+      margin-bottom: 1rem;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+      border: 1px solid #4a0000;
+      width: 100%;
+      height: 300px;
+      background: #000;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .option {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .option:hover {
+      background: rgba(255, 51, 51, 0.3);
+    }
+
+    .correct {
+      background: rgba(0, 200, 0, 0.4) !important;
+    }
+
+    .incorrect {
+      background: rgba(255, 0, 0, 0.4) !important;
+    }
+
+    #explanation {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      font-size: 1.1rem;
+      color: #ffcccc;
+      text-align: left;
+    }
+
+    .result-screen .certificate {
+      background: url('https://i.pinimg.com/originals/5d/8d/5f/5d8d5f9c3b3a2c3d3e3f3a3b3c3d3e3f.jpg') no-repeat center;
+      background-size: cover;
+      border: 2px solid #cc0000;
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 1.5rem auto;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+      color: white;
+      position: relative;
+    }
+
+    .certificate h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      text-shadow: 0 0 5px #000;
+    }
+
+    .certificate p {
+      font-size: 1.2rem;
+      margin: 0.8rem 0;
+      text-shadow: 0 0 5px #000;
+    }
+
+    .certificate strong {
+      color: #ffcccc;
+      font-weight: 700;
+    }
+
+    .download-btn {
+      background: #0066cc;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #330;
+      margin-top: 3rem;
+    }
+
+    footer span {
+      color: #ff3333;
+      font-family: 'Orbitron', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TEBAK RUMAH ADAT & SENJATA</h1>
+  </header>
+
+  <nav>
+    <a href="index.html" onclick="window.location='index.html'">Beranda</a>
+    <a href="jelajah.html" onclick="window.location='bali.html'">Jelajah</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Input Nama -->
+    <div class="screen" id="name-screen">
+      <h2>🎮 Masukkan Nama Kamu</h2>
+      <p>Untuk sertifikatmu nanti</p>
+      <input type="text" id="player-name" placeholder="Contoh: Nazril " maxlength="30" />
+      <br>
+      <button class="btn" onclick="startGame()">Mulai Game</button>
+    </div>
+
+    <!-- Layar Game -->
+    <div class="screen" id="game-screen" style="display: none;">
+      <div class="timer">Waktu: <span id="time">60</span> detik</div>
+      <h2 id="question">Bangunan atau senjata ini berasal dari daerah mana?</h2>
+
+      <div class="image-container">
+        <img id="image" src="" alt="Rumah Adat / Senjata" />
+      </div>
+
+      <div class="options" id="options">
+        <!-- Opsi akan diisi oleh JS -->
+      </div>
+
+      <!-- Penjelasan muncul setelah jawaban -->
+      <div id="explanation">
+        <strong>📘 Penjelasan:</strong> <span id="info-text"></span>
+      </div>
+    </div>
+
+    <!-- Hasil Akhir -->
+    <div class="screen" id="result-screen" style="display: none;">
+      <h2>🎯 Skor Kamu: <span id="final-score">0</span>/5</h2>
+
+      <!-- Sertifikat -->
+      <div class="certificate" id="certificate">
+        <h3>SERTIFIKAT PEJUANG BUDAYA</h3>
+        <p>Diberikan kepada:</p>
+        <p><strong id="cert-name">Peserta</strong></p>
+        <p>Telah menyelesaikan kuis budaya dengan semangat!</p>
+        <p>NusantaraKu.id • 2025</p>
+      </div>
+
+      <!-- Tombol Download -->
+      <button class="btn download-btn" onclick="downloadCertificate()">⬇️ Download Sertifikat</button>
+      <button class="btn" onclick="restartGame()">Main Lagi</button>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 <span>NUSANTARAKU.ID</span> - Satu Nusantara, Seribu Budaya
+  </footer>
+
+  <script>
+    const soalGame = [
+      {
+        image: "https://via.placeholder.com/600x400?text=Rumah+Tongkonan+Toraja",
+        pertanyaan: "Rumah adat ini berasal dari daerah mana?",
+        pilihan: ["Sulawesi Selatan", "Papua", "Kalimantan", "Bali"],
+        jawaban: 0,
+        info: "Rumah Tongkonan dari Sulawesi Selatan memiliki atap berbentuk perahu, simbol kematian sebagai perjalanan roh ke alam leluhur."
+      },
+      {
+        image: "https://via.placeholder.com/600x400?text=Rumah+Limas+Palembang",
+        pertanyaan: "Rumah adat ini berasal dari daerah mana?",
+        pilihan: ["Jawa Tengah", "Sumatra Selatan", "Aceh", "NTB"],
+        jawaban: 1,
+        info: "Rumah Limas dari Palembang memiliki atap lima tingkat, melambangkan lima sila Pancasila dan nilai kehidupan masyarakat Melayu."
+      },
+      {
+        image: "https://via.placeholder.com/600x400?text=Keris+Yogyakarta",
+        pertanyaan: "Senjata tradisional ini berasal dari daerah mana?",
+        pilihan: ["Yogyakarta", "Papua", "Maluku", "NTT"],
+        jawaban: 0,
+        info: "Keris adalah senjata tradisional Jawa, dianggap memiliki kekuatan gaib. Dibuat dengan proses spiritual dan sering diwariskan turun-temurun."
+      },
+      {
+        image: "https://via.placeholder.com/600x400?text=Rumah+Betang+Kalimantan",
+        pertanyaan: "Rumah adat ini berasal dari daerah mana?",
+        pilihan: ["Kalimantan Tengah", "Sulawesi", "Sumatra", "Bali"],
+        jawaban: 0,
+        info: "Rumah Betang adalah rumah panjang suku Dayak di Kalimantan, bisa menampung puluhan kepala keluarga dan berdiri di atas tiang tinggi."
+      },
+      {
+        image: "https://via.placeholder.com/600x400?text=Rencong+Aceh",
+        pertanyaan: "Senjata tradisional ini berasal dari daerah mana?",
+        pilihan: ["Aceh", "Bali", "Jawa Barat", "Papua"],
+        jawaban: 0,
+        info: "Rencong adalah senjata tikam khas Aceh, bentuknya melengkung seperti huruf 'U'. Dulu dibawa setiap pria sebagai simbol keberanian dan identitas."
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let timeLeft = 60;
+    let timer;
+    let playerName = "Peserta";
+
+    function startGame() {
+      const input = document.getElementById("player-name").value.trim();
+      if (!input) {
+        alert("Mohon masukkan nama kamu!");
+        return;
+      }
+      playerName = input;
+      document.getElementById("name-screen").style.display = "none";
+      document.getElementById("game-screen").style.display = "block";
+      currentQuestion = 0;
+      score = 0;
+      timeLeft = 60;
+      document.getElementById("time").textContent = timeLeft;
+
+      // Mulai timer
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("time").textContent = timeLeft;
+        if (timeLeft <= 0) {
+          endGame();
+        }
+      }, 1000);
+
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      const q = soalGame[currentQuestion];
+      document.getElementById("question").textContent = q.pertanyaan;
+      document.getElementById("image").src = q.image;
+
+      const optionsEl = document.getElementById("options");
+      optionsEl.innerHTML = "";
+      q.pilihan.forEach((pil, index) => {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.textContent = pil;
+        div.onclick = () => checkAnswer(index);
+        optionsEl.appendChild(div);
+      });
+
+      // Sembunyikan penjelasan
+      document.getElementById("explanation").style.display = "none";
+    }
+
+    function checkAnswer(selectedIndex) {
+      const options = document.querySelectorAll(".option");
+      const q = soalGame[currentQuestion];
+
+      if (selectedIndex === q.jawaban) {
+        options[selectedIndex].classList.add("correct");
+        score++;
+      } else {
+        options[selectedIndex].classList.add("incorrect");
+        options[q.jawaban].classList.add("correct");
+      }
+
+      // Tampilkan penjelasan
+      document.getElementById("info-text").textContent = q.info;
+      document.getElementById("explanation").style.display = "block";
+
+      // Lanjut setelah 2 detik
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < soalGame.length) {
+          loadQuestion();
+        } else {
+          endGame();
+        }
+      }, 2000);
+    }
+
+    function endGame() {
+      clearInterval(timer);
+      document.getElementById("game-screen").style.display = "none";
+      document.getElementById("result-screen").style.display = "block";
+      document.getElementById("final-score").textContent = score;
+      document.getElementById("cert-name").textContent = playerName;
+
+      // Simpan skor terbaik
+      const bestScore = localStorage.getItem("bestScore") || 0;
+      if (score > bestScore) {
+        localStorage.setItem("bestScore", score);
+      }
+    }
+
+    function downloadCertificate() {
+      const certificate = document.getElementById("certificate");
+      html2canvas(certificate, { backgroundColor: null, scale: 2 }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = `Sertifikat_NusantaraKu_${playerName}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    }
+
+    function restartGame() {
+      document.getElementById("result-screen").style.display = "none";
+      document.getElementById("name-screen").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
